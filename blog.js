@@ -7,7 +7,20 @@ let CurrentPage = 1;;
 
 
 function RenderPosts(){
+    let element = document.getElementById("postsContainer");
+    element.innerHTML = '';
     
+    AllPosts.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'post';
+        div.innerHTML = `
+            <h2 class="post-title">${p.title}</h2>
+            <p class="post-body">${p.body}</p>
+            <div class="UserId">User Id: ${p.userId}</div>
+            <div class="UserId">Post Id: ${p.id}</div>
+        `;
+        element.appendChild(div);
+    });
 }
 
 async function RefreshPosts(){

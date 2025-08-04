@@ -43,6 +43,11 @@
             grid-template-columns:repeat(auto-fill,minmax(20vh,1fr));
             gap:1.5rem;
         }
+        .post {
+            border: black solid 0.1vh;
+            border-radius: 1em;
+            padding: 1vh;
+        }
         .UserId {
             font-size:0.85rem;
             color:#777;
@@ -63,6 +68,17 @@
         .LoadMore:hover {
             background:#2980b9;
         }
+        .Refresh {
+            padding: 1vh 2.5vh;
+            font-size: 1.5vh;
+            border: none; border-radius: 0.8vh;
+            background: #3182ce; color: #fff;
+            cursor: pointer;
+        }
+        .Refresh:hover {
+            background: #2b6cb0;
+            transform: translateY(-0.2vh);
+        }
 
 
     </style>
@@ -73,6 +89,7 @@
 
             <div class="Header">
                 <h1>Blogs</h1>
+                <button class="Refresh" onclick="RefreshPosts();">Refresh</button>
             </div>
 
             <div class="Posts" id="postsContainer">
