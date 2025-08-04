@@ -44,6 +44,9 @@ int main(){
     JavaScriptCode = ReadFile("base.js");
     CssCode = ReadFile("main.css");
 
+    std::string BlogHtml = ReadFile("Blog.html");
+    std::string BlogJavaScript = ReadFile("blog.js");
+
 
     CROW_ROUTE(app, "/refresh")([HTMLCode]() {
         crow::response res;
@@ -76,6 +79,23 @@ int main(){
         res.body = CssCode;
         return res;
     });
+
+    CROW_ROUTE(app, "/blog")([BlogHtml]() {
+        crow::response res;
+        res.code = 200;
+        res.set_header("Content-Type", "text/html");
+        res.body = BlogHtml;
+        return res;
+    });
+
+    CROW_ROUTE(app, "/blog.js")([BlogJavaScript]() {
+        crow::response res;
+        res.code = 200;
+        res.set_header("Content-Type", "application/javascript");
+        res.body = BlogJavaScript;
+        return res;
+    });
+    
 
     app.port(APIPort).multithreaded().run();
 
