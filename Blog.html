@@ -6,16 +6,96 @@
         <title>Rubikamp Blog</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-        <style>
-            * {
-                margin: 0; padding: 0; box-sizing: border-box;
-                font-family: 'Segoe UI', Tahoma, sans-serif;
-            }
-        </style>
+        
+    <style>
 
-        <script src='blog.js'></script>
+        * {
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Segoe UI', Tahoma, sans-serif;
+        }
+        body {
+            background:#f0f2f5;
+            transition: background .3s, color .3s;
+            color:#333;
+        }
+
+        .Main {
+            max-width:960px;
+            margin:2rem auto;
+            padding:1rem;
+        }
+
+        .Header {
+            display:flex;
+            justify-content:space-evenly;
+            align-items:center;
+            margin-bottom:2rem;
+        }
+        .Header h1 {
+            font-size:2rem;
+        }
+
+
+        .Posts {
+            display:grid;
+            grid-template-columns:repeat(auto-fill,minmax(20vh,1fr));
+            gap:1.5rem;
+        }
+        .UserId {
+            font-size:0.85rem;
+            color:#777;
+            text-align:left;
+        }
+
+        .LoadMore {
+            display:block;
+            margin:2rem auto;
+            padding:0.7em 1.5em;
+            border:none;
+            background:#3498db;
+            color:#fff;
+            border-radius:0.5em;
+            cursor:pointer;
+            transition: background .3s;
+        }
+        .LoadMore:hover {
+            background:#2980b9;
+        }
+
+
+    </style>
     </head>
     <body>
 
+        <div class="Main">
+
+            <div class="Header">
+                <h1>Blogs</h1>
+            </div>
+
+            <div class="Posts" id="postsContainer">
+                <div class="post">
+                    <h2 class="post-title">Test Title</h2>
+                    <p class="post-body">The Message</p>
+                    <div class="UserId">User Id: 1</div>
+                </div>
+                <div class="post">
+                    <h2 class="post-title">Test Title 2</h2>
+                    <p class="post-body">The Message 2</p>
+                    <div class="UserId">User Id: 1</div>
+                </div>
+                <div class="post">
+                    <h2 class="post-title">Test Title 3</h2>
+                    <p class="post-body">The Message 3</p>
+                    <div class="UserId">User Id: 2</div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script src='blog.js'></script>
     </body>
 </html>
