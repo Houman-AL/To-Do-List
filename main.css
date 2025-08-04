@@ -1,0 +1,124 @@
+
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif; 
+}
+body {
+    background:#f4f6f8;
+    color:#333;
+    padding:2vh;
+}
+h1 {
+    text-align:center;
+    margin-bottom:2vh;
+}
+
+
+
+#Main {
+    background-color: red;
+
+
+    width: 80vw;
+    height: 85vh;
+
+    padding: 1vh;
+
+    font-size: 1.2em;
+    border-radius: 0.6em;
+    border: solid black 1vh;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+
+    box-shadow:0 0.5vh 0.7vw rgba(0,0,0,0.1);
+}
+
+.TaskItem {
+    margin-top: 1vh;
+    background-color: rgba(0, 0, 255, 0.332);
+    border: solid black 0.2vh;
+    width: 100%;
+    min-height: 6vh;
+    max-height: 15vh;
+
+    color: white;
+
+    overflow-y: auto;
+
+    border-radius: 0.3em;
+    padding:1vh;
+    /* padding-top:10vh; */
+    /* padding-left: 1vw; */
+    /* padding-right: 0vw; */
+    text-align: left;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    /* justify-content: center; */
+}
+
+.TaskTitle {
+    flex: 1;
+}
+
+/* TaskItem */
+.TaskItem button {
+    /* margin-left: auto; */
+    /* justify-content: right; */
+    float: right;
+
+    background:none;
+    border:none;
+    cursor:pointer;
+    margin-right:0.5vh;
+    font-size: 1.5em;
+    padding: 0.2vh;
+}
+.TaskItem button:hover {
+    border: solid #dc3545 0.2vh;
+    padding: 0.0vh;
+    background-color: #0057b36b;
+}
+.TaskItem button.TaskInfoButton {
+    color:#ffc107;
+}
+.TaskItem button.RemoveTaskButton {
+    color:#dc3545;
+}
+
+
+
+
+#Controls {
+    display:flex;
+    gap:1em;
+    margin-bottom:0.5em;
+}
+#Controls input, #Controls select {
+    font-size: 1.0em;
+    flex:1;
+    padding:1em;
+    border:0.1vh solid #ccc;
+    border-radius:0.4em;
+}
+#Controls button {
+    font-size: 1.0em;
+    font-weight: 600;
+    padding:0 2vh;
+    border:none;
+    background:#007bff;
+    color:#fff;
+    border-radius:0.4em;
+    cursor:pointer;
+}
+#Controls button:hover {
+    background:#0056b3;
+}
