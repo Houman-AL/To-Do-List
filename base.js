@@ -1,40 +1,12 @@
 
-
-async function SendDatas(tb){
-    try {
-      const response = await fetch('http://5.42.223.149:18080/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          tb: tb,
-          timestamp: new Date().toISOString()
-        }),
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const result = await response.json();
-      console.log('Server response:', result);
-      return result;
-    } catch (error) {
-      console.error('Error sending tasks:', error);
-      throw error;
-    }
-}
-
-
-
 let temp_task;
-
 
 let Settings = JSON.parse(localStorage.getItem("Settings")) || {
   SaveOnServer: false,
   IntervalDays: 1
 };
 
-if (typeof Settings.IntervalDays !== 'number' || Settings.IntervalDays < 0 || !Number.isInteger(Settings.IntervalDays)) Settings.IntervalDays=1;
+if (typeof Settings.IntervalDays !== 'number' || Settings.IntervalDays < 0 || Settings.IntervalDays > 1000000 || !Number.isInteger(Settings.IntervalDays)) Settings.IntervalDays=1;
 
 const oneDayInMs = 24 * 60 * 60 * 1000;
 
@@ -68,8 +40,6 @@ function SecondsToTime(seconds) {
     return `${h}:${m}`;
 }
 
-
-
 class My_Local_Datas {
     constructor(){
         this.Tasks=JSON.parse(localStorage.getItem("LocalTasksDatas")) || [];
@@ -81,8 +51,6 @@ class My_Local_Datas {
 
 let m_db = new My_Local_Datas();
 
-
-
 function LoadEditorValues() {
     const task = new TaskToDo();
 
@@ -93,7 +61,6 @@ function LoadEditorValues() {
     const startedTimeStr = document.getElementById("Started_Time_Input").value;
     const autoRemoveDateStr = document.getElementById("Auto_Remove_Date_Input").value;
     const autoRemoveTimeStr = document.getElementById("Auto_Remove_Time_Input").value;
-
 
     if (startedDateStr) task.started_date = DateToDays(new Date(startedDateStr));
 
@@ -139,12 +106,6 @@ function LoadValuesToEditor(task) {
     document.getElementById("checked").checked = !!task.checked;
 }
 
-
-
-
-// Create , Read, Edit, Remove
-// Title, Description Info, Image, Time, Date, Check Point, Alarm, 
-
 class TaskToDo {
     constructor(){
         this.checked=false;
@@ -154,9 +115,6 @@ class TaskToDo {
         this.started_date=DateToDays();
         this.auto_remove_time=0;
         this.auto_remove_date=this.started_date+Settings.IntervalDays;
-
-        // load or create list
-
     }
 
     dump() {
@@ -185,7 +143,6 @@ class TaskToDo {
 class ToDoList {
     constructor(){
         this.Tasks=m_db.Tasks;
-        // load or create list
     }
 
     SaveTasks(){
@@ -212,6 +169,7 @@ class ToDoList {
         try {
             if (this.Tasks && this.Tasks[id]){
                 LoadValuesToEditor(this.Tasks[id]);
+                temp_task = this.Tasks[id];
                 ChangeEditorDisplay(true);
             }
         } catch (error) {
@@ -226,7 +184,6 @@ class ToDoList {
         this.ShowTasks();
     }
     ShowTasks(){
-
         const task_list_div = document.getElementById("TaskList");
         if (!task_list_div) return;
 
@@ -249,6 +206,7 @@ class ToDoList {
             checkbox.className = 'TaskCheckBox';
             checkbox.name = 'TaskCheckBox';
             checkbox.type = 'checkbox';
+            checkbox.checked = task.checked;
 
             const infoButton = document.createElement('button');
             infoButton.className = 'TaskInfoButton';
@@ -268,19 +226,21 @@ class ToDoList {
             taskDiv.appendChild(removeButton);
 
             task_list_div.appendChild(taskDiv);
-
         });
-
-
-    // LoadValuesToEditor();
     }
 }
 
 let MyList = new ToDoList();
 
+function SaveSettings(){
+    localStorage.setItem('Settings', JSON.stringify(Settings));
+}
 
 function OnClickId(id, callback){
-    document.getElementById(id).addEventListener('click', callback);
+    const element = document.getElementById(id);
+    if (element) {
+        element.addEventListener('click', callback);
+    }
 }
 
 function ChangeSettingDisplay(b){
@@ -291,43 +251,53 @@ function ChangeEditorDisplay(b){
     document.getElementById('TaskEditor').style.display = b?'block':'none';
 }
 
+function SaveNewTask(){
+    const task = LoadEditorValues();
+    if (temp_task && MyList.Tasks.includes(temp_task)) {
+        const index = MyList.Tasks.indexOf(temp_task);
+        MyList.Tasks[index] = task;
+    } else {
+        MyList.Tasks.push(task);
+    }
+    MyList.SaveTasks();
+    MyList.ShowTasks();
+    ChangeEditorDisplay(false);
+}
+
+function CloseTaskEditor(){
+    ChangeEditorDisplay(false);
+}
+
 window.addEventListener('DOMContentLoaded', () => {
+    const NewTaskInput = document.getElementById("NewTaskInput");
+    
     OnClickId("Setting", () => {
+        document.getElementById('DefaultInterval').value=Settings.IntervalDays;
         ChangeSettingDisplay(true);
     });
     OnClickId("SaveSettings", () => {
+        let backup=Settings.IntervalDays;
+        Settings.IntervalDays = parseInt(document.getElementById('DefaultInterval').value);
+        if (Settings.IntervalDays < 0 || Settings.IntervalDays > 1000000) Settings.IntervalDays=backup;
+        SaveSettings();
         ChangeSettingDisplay(false);
     });
     OnClickId("CancelSettings", () => {
         ChangeSettingDisplay(false);
     });
 
-
     OnClickId("NewTaskButton", () => {
-        temp_task = new TaskToDo();
-        temp_task.title = NewTaskInput.value;
-        LoadValuesToEditor(temp_task);
-        ChangeEditorDisplay(true);
+        if (NewTaskInput) {
+            temp_task = new TaskToDo();
+            temp_task.title = NewTaskInput.value;
+            NewTaskInput.value="";
+            LoadValuesToEditor(temp_task);
+            ChangeEditorDisplay(true);
+        }
     });
+
+    OnClickId("SaveTask", SaveNewTask);
+    OnClickId("CancelTask", CloseTaskEditor);
 
     MyList.ShowTasks();
 });
-
-function SaveNewTask(){
-    MyList.Tasks.push(LoadEditorValues());
-    MyList.ShowTasks();
-
-    ChangeEditorDisplay(false);
-
-}
-
-function CloseTaskEditor(){
-    ChangeEditorDisplay(false);
-    MyList.ShowTasks();
-}
-
-        // MyList.Tasks.push(new TaskToDo());
-        // LoadValuesToEditor(MyList.Tasks[MyList.Tasks.length-1]);
-
-
-

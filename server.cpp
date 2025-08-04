@@ -38,9 +38,11 @@ int main(){
 
     std::string HTMLCode="";
     std::string JavaScriptCode="";
+    std::string CssCode="";
 
     HTMLCode = ReadFile("ToDoList.html");
     JavaScriptCode = ReadFile("base.js");
+    CssCode = ReadFile("main.css");
 
 
     CROW_ROUTE(app, "/refresh")([HTMLCode]() {
@@ -64,6 +66,14 @@ int main(){
         res.code = 200;
         res.set_header("Content-Type", "application/javascript");
         res.body = JavaScriptCode;
+        return res;
+    });
+
+    CROW_ROUTE(app, "/main.css")([CssCode]() {
+        crow::response res;
+        res.code = 200;
+        res.set_header("Content-Type", "text/css");
+        res.body = CssCode;
         return res;
     });
 
