@@ -196,3 +196,116 @@ h1 {
 #SettingPage .ButtonGroup button:hover {
     color: #fccd77;
 }
+
+
+
+#TaskEditor {
+    font-size: 1.5vh;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display:none;
+    /* display:block; */
+
+    width:70vw;
+    /* height:50vh; */
+    margin:0 auto;
+    background:#fff;
+    padding:2.5vh;
+    border-radius:0.5vh;
+    box-shadow:0 0.5vh 0.7vw rgba(0,0,0,0.1);
+    margin-top: 2.5vh;
+
+    z-index: 1;
+}
+
+#TaskEditor h2 {
+    text-align: center;
+    margin-bottom: 2vh;
+}
+
+#TaskEditor .FormGroup {
+    margin-bottom: 1.5vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.FormGroup label {
+  margin-bottom: 0.6vh;
+  font-weight: bold;
+  font-size: 1.4vh;
+  color: #444;
+}
+
+.FormGroup input,
+.FormGroup textarea,
+.FormGroup select {
+    padding: 1vh;
+    border: 0.1vh solid #ccc;
+    border-radius: 0.6vh;
+    font-size: 1.5vh;
+    background-color: #fff;
+    transition: border-color 0.2s;
+}
+
+.FormGroup input:focus,
+.FormGroup textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 6vh;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 1.2vh;
+    font-size: 1.6vh;
+    border-radius: 0.8vh;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.close_btn {
+    margin-top: 0.5vh;
+    background-color: #e2a61a !important;
+}
+.close_btn:hover {
+  background-color: #b31b00 !important;
+}
+
+/* .TaskCheckBox {
+    margin-right: 0.25vw;
+    margin-left: 0.25vw;
+    width: 2vh;
+    height: 2vh;
+} */
+
+.output {
+  background-color: #f1f1f1;
+  padding: 1vh;
+  margin-top: 2vh;
+  border-radius: 0.8vh;
+  white-space: pre-wrap;
+  font-family: monospace;
+  font-size: 1.4vh;
+}
+
+.form-inline {
+  display: flex;
+  gap: 1.5vh;
+  flex-wrap: wrap;
+}

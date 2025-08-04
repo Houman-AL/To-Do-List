@@ -10,9 +10,58 @@
     </head>
     <body>
 
+        <div id="TaskEditor">
+            <h2>Task Editor - TaskToDo</h2>
+
+            <div class="FormGroup">
+                <label for="Title">Title:</label>
+                <input type="text" id="Title" placeholder="title">
+            </div>
+
+            <div class="FormGroup">
+                <label for="Description">Description:</label>
+                <textarea id="Description" rows="3" placeholder="info"></textarea>
+            </div>
+
+
+            <div class="FormGroup">
+                <label for="Started_Date_Input">تاریخ شروع:</label>
+                <input type="date" id="Started_Date_Input">
+            </div>
+            <div class="FormGroup">
+                <label for="Started_Time_Input">زمان شروع:</label>
+                <input type="time" id="Started_Time_Input" step="60">
+            </div>
+
+            <div class="FormGroup">
+                <label for="Auto_Remove_Date_Input">تاریخ حذف خودکار:</label>
+                <input type="date" id="Auto_Remove_Date_Input">
+            </div>
+            <div class="FormGroup">
+                <label for="Auto_Remove_Time_Input">زمان حذف خودکار:</label>
+                <input type="time" id="Auto_Remove_Time_Input" step="60">
+            </div>
+
+
+            <div class="FormGroup">
+                <label>
+                    <input type="checkbox" id="checked" class="TaskCheckBox"> Completed?
+                </label>
+            </div>
+
+            <button class="btn" onclick="SaveNewTask()">Save</button>
+
+            <button class="btn close_btn" onclick="CloseTaskEditor()">Close</button>
+
+            <div class="output" id="taskOutput"></div>
+        </div>
+
+
+
+
         <div id="SettingPage">
             <h2>Setting</h2>
-            <div class="FormGP">
+            <div class="FormGroup">
                 <label for="SaveLocation">Default Save Location:</label>
                 <select id="SaveLocation">
                     <option value="Local">Local</option>
