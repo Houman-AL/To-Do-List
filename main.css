@@ -21,14 +21,15 @@ h1 {
 #Main {
     background-color: red;
 
+    z-index: 0;
 
     width: 80vw;
     height: 85vh;
 
     padding: 1vh;
 
-    font-size: 1.2em;
-    border-radius: 0.6em;
+    font-size: 1.2vh;
+    border-radius: 0.6vh;
     border: solid black 1vh;
 
     position: absolute;
@@ -52,7 +53,7 @@ h1 {
 
     overflow-y: auto;
 
-    border-radius: 0.3em;
+    border-radius: 0.3vh;
     padding:1vh;
     /* padding-top:10vh; */
     /* padding-left: 1vw; */
@@ -79,7 +80,7 @@ h1 {
     border:none;
     cursor:pointer;
     margin-right:0.5vh;
-    font-size: 1.5em;
+    font-size: 1.5vh;
     padding: 0.2vh;
 }
 .TaskItem button:hover {
@@ -94,31 +95,104 @@ h1 {
     color:#dc3545;
 }
 
+.TaskCheckBox {
+    margin-right: 0.25vw;
+    margin-left: 0.25vw;
+    width: 2vh;
+    height: 2vh;
+}
 
 
 
 #Controls {
     display:flex;
-    gap:1em;
-    margin-bottom:0.5em;
+    gap:1vh;
+    margin-bottom:0.5vh;
 }
 #Controls input, #Controls select {
-    font-size: 1.0em;
+    font-size: 1.0vh;
     flex:1;
-    padding:1em;
+    padding:1vh;
     border:0.1vh solid #ccc;
-    border-radius:0.4em;
+    border-radius:0.4vh;
 }
 #Controls button {
-    font-size: 1.0em;
+    font-size: 1.0vh;
     font-weight: 600;
     padding:0 2vh;
     border:none;
     background:#007bff;
     color:#fff;
-    border-radius:0.4em;
+    border-radius:0.4vh;
     cursor:pointer;
 }
 #Controls button:hover {
     background:#0056b3;
+}
+
+#SettingPage {
+    font-size: 1.5vh;
+    /* position:fixed; */
+    /* position: absolute; */
+
+    /* top:0;left:0; width:100%; height:100%; */
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* background:rgba(0,0,0,0.5); */
+    display:none;
+    /* display:block; */
+    /* align-items:center; justify-content:center; */
+
+    width:60vw;
+    height:20vh;
+    margin:0 auto;
+    background:#fff;
+    padding:0.5vh;
+    border-radius:0.5vh;
+    box-shadow:0 0.5vh 0.7vw rgba(0,0,0,0.1);
+    margin-top: 2.5vh;
+
+    z-index: 2;
+
+}
+#SettingPage h2 {
+    margin-bottom:0.1vh;
+}
+#SettingPage .FormGroup {
+    margin-bottom:0.1vh;
+}
+#SettingPage label {
+    display:block;
+    margin-bottom:0.25vh;
+}
+#SettingPage input, #SettingPage select {
+    font-size: 1.5vh;
+    width:100%;
+    padding:0.1vh;
+    border:0.1vh solid #ccc;
+    border-radius:0.1vh;
+    margin-bottom:0.3vh;
+}
+#SettingPage .ButtonGroup {
+    text-align:right;
+    margin-top:2vh;
+}
+#SettingPage .ButtonGroup button {
+    margin-left:0.1vh;
+    padding: 0.33vh;
+
+    background:none;
+    border:none;
+    cursor:pointer;
+    margin-right:0.5vh;
+    font-size: 1.5vh;
+    padding: 0.2vh;
+}
+
+#SettingPage .ButtonGroup button:hover {
+    color: #fccd77;
 }

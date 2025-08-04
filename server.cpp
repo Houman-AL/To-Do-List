@@ -15,8 +15,6 @@ long long GetTimeAsMS() {
     return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
 }
 
-
-
 std::string ReadFile(const std::string& filename) {
     std::ifstream file(filename);
     if (!file) return "File not found!";
