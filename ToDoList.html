@@ -61,13 +61,13 @@
 
         <div id="SettingPage">
             <h2>Setting</h2>
-            <div class="FormGroup">
+            <!-- <div class="FormGroup">
                 <label for="SaveLocation">Default Save Location:</label>
                 <select id="SaveLocation">
                     <option value="Local">Local</option>
                     <option value="Server">Server</option>
                 </select>
-            </div>
+            </div> -->
             <div class="FormGroup">
                 <label for="DefaultInterval">Default Duration (Days)</label>
                 <input id="DefaultInterval" type="number" min="0" placeholder="" />
@@ -86,79 +86,83 @@
                 <button id="Setting">⚙️Setting</button>
             </div>
 
-            <div class="TaskItem" data-id="">
-                <span class="TaskTitle">
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                </span>
-                <input class="TaskCheckBox" name="TaskCheckBox" type="checkbox">
-                <button class="TaskInfoButton">
-                    Info/Edit
-                </button>
-                <button class="RemoveTaskButton">
-                    Remove
-                </button>
-            </div>
+            <div id="TaskList">
+
+                <div class="TaskItem" data-id="">
+                    <span class="TaskTitle">
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                    </span>
+                    <input class="TaskCheckBox" name="TaskCheckBox" type="checkbox">
+                    <button class="TaskInfoButton">
+                        Info/Edit
+                    </button>
+                    <button class="RemoveTaskButton">
+                        Remove
+                    </button>
+                </div>
 
 
 
 
 
-            <div class="TaskItem" data-id="">
-                <span class="TaskTitle">
-                    Title Title TEst TEst
-                    Title Title TEst TEst
-                </span>
-                <input class="TaskCheckBox" name="TaskCheckBox" type="checkbox">
-                <button class="TaskInfoButton">
-                    Info/Edit
-                </button>
-                <button class="RemoveTaskButton">
-                    Remove
-                </button>
+                <div class="TaskItem" data-id="">
+                    <span class="TaskTitle">
+                        Title Title TEst TEst
+                        Title Title TEst TEst
+                    </span>
+                    <input class="TaskCheckBox" name="TaskCheckBox" type="checkbox">
+                    <button class="TaskInfoButton" onclick="OpenTaskEditor(1)">
+                        Info/Edit
+                    </button>
+                    <button class="RemoveTaskButton" onclick="RemoveTask(1)">
+                        Remove
+                    </button>
+                </div>
+
             </div>
 
 
